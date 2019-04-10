@@ -22,7 +22,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "headless/lambda.js",
-        "code": "exports.handler = function(event, context, callback) {\n    (async () => {\n    const puppeteerLambda = require('puppeteer-lambda');\n    const browser = await puppeteerLambda.getBrowser({\n    headless: true\n    });\n    const page = await browser.newPage();\n    await page.goto('https://example.com');\n    const image = await page.screenshot({path: 'example.png'});\n \n     callback(null, image);\n\n    await browser.close(); \n})();\n}",
+        "code": "exports.handler = function(event, context, callback) {\n    (async () => {\n    const puppeteerLambda = require('puppeteer-lambda');\n    const browser = await puppeteerLambda.getBrowser({\n    headless: true\n    });\n    const page = await browser.newPage();\n    await page.goto('https://example.com');\n    const image = await page.screenshot({path: 'example.png'});\n \n    callback(null, image);\n\n    await browser.close(); \n})();\n}",
         "triggers": [
           {
             "resourceName": "apigeuWest1screenshotscreenshotany",
@@ -95,7 +95,7 @@
     "projectRegion": "eu-west-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1554904439996
+    "lastSave": 1554904878768
   },
   "VCS_STATE": {
     "provider": "GitHub",

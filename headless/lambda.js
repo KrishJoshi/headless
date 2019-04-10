@@ -8,7 +8,7 @@ exports.handler = function(event, context, callback) {
     await page.goto('https://example.com');
     const image = await page.screenshot({path: 'example.png'});
  
-     callback(null, image);
+    callback(null, image);
 
     await browser.close(); 
 })();
