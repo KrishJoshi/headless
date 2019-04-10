@@ -23,7 +23,12 @@
         "isRemovable": true,
         "filePath": "headless/lambda.js",
         "code": "exports.handler = function(event, context, callback) {\n    (async () => {\n    const puppeteerLambda = require('puppeteer-lambda');\n    const browser = await puppeteerLambda.getBrowser({\n    headless: true\n    });\n    const page = await browser.newPage();\n    await page.goto('https://example.com');\n    const image = await page.screenshot({path: 'example.png'});\n \n     callback(null, image);\n\n    await browser.close(); \n})();\n}",
-        "triggers": [],
+        "triggers": [
+          {
+            "resourceName": "apigeuWest1screenshotscreenshotany",
+            "config": {}
+          }
+        ],
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -39,7 +44,27 @@
       "8c1a174a-f336-40cb-8427-ef5d0647f823"
     ],
     "currentFileId": "8c1a174a-f336-40cb-8427-ef5d0647f823",
-    "resources": {},
+    "resources": {
+      "apigeuWest1screenshotscreenshotany": {
+        "name": "apigeuWest1screenshotscreenshotany",
+        "type": "API_GATEWAY",
+        "config": {
+          "selectedRegion": "eu-west-1",
+          "apiMode": 0,
+          "apiName": "screenshot",
+          "endpointType": "EDGE",
+          "resourceMode": 0,
+          "resourceName": "screenshot",
+          "resourcePath": "/screenshot",
+          "restMethod": "ANY",
+          "proxyIntegration": false,
+          "enableCORS": false,
+          "stageMode": 0,
+          "stageName": "Prod"
+        },
+        "globallyEditable": false
+      }
+    },
     "customTemplate": {
       "dialect": null,
       "definitions": {}
@@ -70,7 +95,7 @@
     "projectRegion": "eu-west-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1554904283843
+    "lastSave": 1554904439996
   },
   "VCS_STATE": {
     "provider": "GitHub",
