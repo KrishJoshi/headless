@@ -1,0 +1,82 @@
+{
+  "EDITOR_STATE": {
+    "allProjectFiles": {
+      "1bd89e64-e3b8-4414-959a-a9bee13dbc98": {
+        "id": "1bd89e64-e3b8-4414-959a-a9bee13dbc98",
+        "parent": null,
+        "name": "headless",
+        "type": "DIRECTORY",
+        "isDirectory": true,
+        "children": [
+          "8c1a174a-f336-40cb-8427-ef5d0647f823"
+        ],
+        "isRemovable": false,
+        "filePath": "headless"
+      },
+      "8c1a174a-f336-40cb-8427-ef5d0647f823": {
+        "id": "8c1a174a-f336-40cb-8427-ef5d0647f823",
+        "parent": "1bd89e64-e3b8-4414-959a-a9bee13dbc98",
+        "name": "lambda.js",
+        "type": "LAMBDA_FILE",
+        "isDirectory": false,
+        "children": [],
+        "isRemovable": true,
+        "filePath": "headless/lambda.js",
+        "code": "exports.handler = function(event, context, callback) {\n    (async () => {\n    const puppeteerLambda = require('puppeteer-lambda');\n    const browser = await puppeteerLambda.getBrowser({\n    headless: true\n    });\n    const page = await browser.newPage();\n    await page.goto('https://example.com');\n    const image = await page.screenshot({path: 'example.png'});\n \n     callback(null, image);\n\n    await browser.close(); \n})();\n}",
+        "triggers": [],
+        "config": {
+          "runtime": "nodejs8.10",
+          "handler": "handler",
+          "timeout": 60,
+          "memory": 128,
+          "layers": []
+        }
+      }
+    },
+    "deletedFiles": [],
+    "rootNode": "1bd89e64-e3b8-4414-959a-a9bee13dbc98",
+    "openFiles": [
+      "8c1a174a-f336-40cb-8427-ef5d0647f823"
+    ],
+    "currentFileId": "8c1a174a-f336-40cb-8427-ef5d0647f823",
+    "resources": {},
+    "customTemplate": {
+      "dialect": null,
+      "definitions": {}
+    },
+    "envVariables": [
+      {
+        "lambdaId": "all",
+        "varKey": "SIGMA_AWS_ACC_ID",
+        "varValue": null,
+        "shouldPersist": false,
+        "displayOnly": false,
+        "editable": false
+      }
+    ],
+    "packageJSON": {
+      "dependencies": {
+        "puppeteer-lambda": {
+          "name": "puppeteer-lambda",
+          "version": "1.0.15"
+        }
+      }
+    }
+  },
+  "PROJECT_META": {
+    "projectName": "headless",
+    "projectDescription": "",
+    "projectVersion": "1.0.0",
+    "projectRegion": "eu-west-1",
+    "platform": "AWS",
+    "platformRegions": {},
+    "lastSave": 1554904283843
+  },
+  "VCS_STATE": {
+    "provider": "GitHub",
+    "repo": {
+      "name": "headless",
+      "url": "https://github.com/KrishJoshi/headless"
+    }
+  }
+}
